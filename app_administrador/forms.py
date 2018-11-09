@@ -7,7 +7,8 @@ from django.contrib.auth.forms import AuthenticationForm
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(
         attrs={"type": "email", "name": "username", "autocomplete": "username", "id": "username",
-               "placeholder": "Ingrese Correo Electronico", "class": "form-control"}), required=True)
+               "placeholder": "Ingrese Correo Electronico", "class": "form-control", 'autofocus': "autofocus"}),
+        required=True)
     password = forms.CharField(
         widget=forms.TextInput(
             attrs={"type": "password", "name": "password", "id": "password", "placeholder": "Ingrese Contraseña",
@@ -21,5 +22,5 @@ class LoginForm(AuthenticationForm):
             )
         else:
             pass
-            #valanti_data = Valanti(nana=Nana.objects.get(cuenta_de_usuario=user))
-            #valanti_data.save()
+            # valanti_data = Valanti(nana=Nana.objects.get(cuenta_de_usuario=user))
+            # valanti_data.save()

@@ -20,5 +20,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^app_administrador/', include('app_administrador.urls', namespace='app_administrador', app_name='app_administrador')),
+    url(r'^app_administrador/', include('app_administrador.urls', namespace='app_administrador', app_name='app-administrador')),
+    url(r'^nucleo/', include('nucleo.urls', namespace='nucleo', app_name='app-nucleo')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

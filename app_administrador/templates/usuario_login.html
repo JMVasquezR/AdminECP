@@ -5,19 +5,35 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-            <form>
+            <form method="POST" action="{% url "app_administrador:administrador_login" %}">
+                <div style="display:none">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
-                               required="required" autofocus="autofocus">
-                        <label for="inputEmail">Email address</label>
+                        {% if form.username.errors %}
+                            {{ form.username }}
+                        {% else %}
+                            {{ form.username }}
+                        {% endif %}
+                        <div class="form-control-feedback">
+                            <i class="icon-user text-muted"></i>
+                        </div>
+                        <label for="username">Email address</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password"
-                               required="required">
-                        <label for="inputPassword">Password</label>
+                        {% if form.password.errors %}
+                            {{ form.password }}
+                        {% else %}
+                            {{ form.password }}
+                        {% endif %}
+
+                        <div class="form-control-feedback">
+                            <i class="icon-lock2 text-muted"></i>
+                        </div>
+                        <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -28,7 +44,12 @@
                         </label>
                     </div>
                 </div>
-                <a class="btn btn-primary btn-block" href="index.html">Login</a>
+                <div class="form-group">
+                    <button type="submit" id="iniciar_sesion" class="btn btn-primary btn-block">
+                        Ingresar
+                    </button>
+                </div>
+                <div id="div_error_message">{{ error }}</div>
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="register.html">Register an Account</a>
